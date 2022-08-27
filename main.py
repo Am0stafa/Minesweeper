@@ -3,6 +3,7 @@ import setting
 import utils
 import Cell as cell
 
+
 root = tk.Tk()
 root.configure(bg="black")
 root.geometry(f'{setting.WIDTH}x{setting.HEIGHT}')
@@ -25,9 +26,14 @@ centerFrame.place(x=utils.widthPrct(25),y=utils.hightPrct(25))
 
 for x in range(setting.GRID_SIZE):
     for y in range(setting.GRID_SIZE):
-        c =  cell.Cell()
+        c =  cell.Cell(x,y)
         c.createBtn(centerFrame)
         c.cell_btn_object.grid(column=x,row=y)
-    
+
+cell.Cell.genRandomMine();
+
+for i in cell.Cell.all:
+    print(i.isMine)
+
 # Run the window
 root.mainloop() 
