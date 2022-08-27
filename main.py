@@ -15,6 +15,16 @@ root.resizable(False, False)
 topFrame = tk.Frame(root, bg="black", width=setting.WIDTH, height=utils.hightPrct(25))
 topFrame.place(x=0,y=0)
 
+game_title = tk.Label(
+    topFrame,
+    bg='black',
+    fg='white',
+    text='Minesweeper Game',
+    font=('', 48)
+)
+
+game_title.place(x=utils.widthPrct(25), y=0)
+
 leftFrame = tk.Frame(root, bg="black", width=utils.widthPrct(25), height=utils.hightPrct(75))
 leftFrame.place(x=0,y=utils.hightPrct(25))
 
@@ -30,10 +40,12 @@ for x in range(setting.GRID_SIZE):
         c.createBtn(centerFrame)
         c.cell_btn_object.grid(column=x,row=y)
 
+
+# Call the label from the Cell class
+cell.Cell.create_cell_count_label(leftFrame)
+cell.Cell.cell_count_label_object.place(x=0, y=0)
 cell.Cell.genRandomMine();
 
-for i in cell.Cell.all:
-    print(i.isMine)
 
 # Run the window
 root.mainloop() 
