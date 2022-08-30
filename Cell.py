@@ -35,10 +35,13 @@ class Cell:
         else:
             if self.surroundingCounter() == 0:
                 for cell_obj in self.surrounding():
-                    if cell_obj.surroundingCounter() ==0:
+                    if cell_obj.surroundingCounter() == 0:
                         cell_obj.showCell()
                         for x in cell_obj.surrounding():
                             x.showCell()
+                            if x.surroundingCounter() == 0:
+                                for y in x.surrounding():
+                                    y.showCell()
                     else:
                         cell_obj.showCell()
             self.showCell()
