@@ -42,6 +42,9 @@ class Cell:
                             if x.surroundingCounter() == 0:
                                 for y in x.surrounding():
                                     y.showCell()
+                                    if y.surroundingCounter() == 0:
+                                        for g in y.surrounding():
+                                            g.showCell()
                     else:
                         cell_obj.showCell()
             self.showCell()
